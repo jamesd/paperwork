@@ -1,31 +1,33 @@
-# paperwork is a python2-only app; unstable has been converted to python3
 Name:           paperwork
-Version:        0.3.2
+Version:        1.0.4
 Release:        1%{?dist}
 Summary:        A personal document manager for scanned documents
 
 License:        gplv3+
 URL:            https://github.com/jflesch/paperwork/wiki
-Source0:        https://github.com/jflesch/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/jflesch/%{name}/archive/%{version}/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  enchant-devel
 BuildRequires:  libjpeg-turbo-devel
-BuildRequires:  python-devel
-BuildRequires:  python-pillow-devel
-BuildRequires:  python-setuptools
+BuildRequires:  python3-devel
+BuildRequires:  python3-pillow-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel
 Requires:  gtk3
+Requires:  libpillowfight
+Requires:  paperwork-backend
 Requires:  poppler-glib
 Requires:  pycairo
 Requires:  pygobject3
-Requires:  python-Levenshtein
-Requires:  python-enchant
-Requires:  python-pycountry
-Requires:  python-pyocr
-Requires:  python-simplebayes
 Requires:  python-termcolor
-Requires:  python-whoosh
+Requires:  python3-Levenshtein
+Requires:  python3-enchant
+Requires:  python3-pillowfight
+Requires:  python3-pycountry
+Requires:  python3-pyocr
+Requires:  python3-simplebayes
+Requires:  python3-whoosh
 Requires:  tesseract
 
 
@@ -45,29 +47,35 @@ In other words, let the machine do most of the work for you.
 
 
 %build
-%{__python2} setup.py build
+%{__python3} setup.py build
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python2} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%{__python3} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 
 
 # %check
-# %{__python2} setup.py test
+# %{__python3} setup.py test
 
 
 %files
 %license COPYING
 %doc AUTHORS README.markdown example-paperwork.conf ChangeLog
-%{python2_sitelib}/*
+%{python3_sitelib}/*
 %{_datadir}/applications/paperwork.desktop
 %{_datadir}/%{name}
 %{_datadir}/locale
 %{_datadir}/icons
 %{_bindir}/%{name}
-%{_bindir}/paperwork-chkdeps
+
 
 %changelog
+* Sat Nov 19 2016 James Davidson <james@greycastle.net> - 1.0.4-1
+- Update to 1.0.4
+
+* Fri Nov 18 2016 James Davidson <james@greycastle.net> - 1.0.3-1
+- Update to 1.0.3
+
 * Tue Aug 23 2016 James Davidson <james@greycastle.net>
 - Initial packaging
