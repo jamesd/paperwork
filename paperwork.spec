@@ -1,5 +1,5 @@
 Name:           paperwork
-Version:        1.0.4
+Version:        1.0.5
 Release:        1%{?dist}
 Summary:        A personal document manager for scanned documents
 
@@ -25,6 +25,7 @@ Requires:  python3-Levenshtein
 Requires:  python3-enchant
 Requires:  python3-pillowfight
 Requires:  python3-pycountry
+Requires:  python3-pyinsane
 Requires:  python3-pyocr
 Requires:  python3-simplebayes
 Requires:  python3-whoosh
@@ -71,6 +72,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Nov 22 2016 James Davidson <james@greycastle.net> - 1.0.5-1
+- Update on 1.0.5
+
 * Sat Nov 19 2016 James Davidson <james@greycastle.net> - 1.0.4-1
 - Update to 1.0.4
 
