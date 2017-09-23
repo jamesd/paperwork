@@ -1,5 +1,5 @@
 Name:           paperwork
-Version:        1.0.5
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        A personal document manager for scanned documents
 
@@ -16,7 +16,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel
 Requires:  gtk3
 Requires:  libpillowfight
-Requires:  paperwork-backend
+Requires:  paperwork-backend = %{version}
 Requires:  poppler-glib
 Requires:  pycairo
 Requires:  pygobject3
@@ -64,14 +64,13 @@ rm -rf $RPM_BUILD_ROOT
 %license COPYING
 %doc AUTHORS README.markdown example-paperwork.conf ChangeLog
 %{python3_sitelib}/*
-%{_datadir}/applications/paperwork.desktop
-%{_datadir}/%{name}
-%{_datadir}/locale
-%{_datadir}/icons
 %{_bindir}/%{name}
 
 
 %changelog
+* Thu Sep 21 2017 James Davidson <james@greycastle.net> - 1.2.1-1
+- Update to 1.2.1
+
 * Tue Nov 22 2016 James Davidson <james@greycastle.net> - 1.0.5-1
 - Update on 1.0.5
 
